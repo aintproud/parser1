@@ -1,0 +1,34 @@
+{
+    "code":"",
+    "name":"",
+    "producer":"",
+    "price":0,
+    "storages":[
+        {
+            "location":"",
+            "count": 0,
+            "delivery": {
+                "count":0,
+                "date":""
+            }
+        }
+    ],
+    "crosses":[
+        {    
+            "code":"",
+            "name":"",
+            "producer":"",
+            "price":0,
+            "storages":[
+                {
+                    "location":"",
+                    "count": 0,
+                    "delivery": {
+                        "count":0,
+                        "date":""
+                    }
+                }
+            ]
+        }
+    ]
+}
