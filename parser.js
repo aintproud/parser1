@@ -41,7 +41,8 @@ const password = 'FdnjCthutq2017';
             freshArray.pop()
             freshArray.pop()
             freshArray.shift()
-            for(const element of freshArray){
+            for(i=0;i<freshArray.length; i++){
+                const element = freshArray[i]
                 const transit = await element.$('.transit')
                 const count = await element.$('.amois')
                 const tag = await page.$('.amono')
@@ -67,7 +68,12 @@ const password = 'FdnjCthutq2017';
                 }
                 await page.waitForTimeout(1000)
             }
-            await page.click(selectors.searchField,{clickCount:3})   
+
+            await page.keyboard.down( 'Control' );
+            await page.keyboard.press( 'A' );
+            await page.keyboard.up( 'Control' );
+            await page.keyboard.press( 'Backspace' );
+            
             await page.waitForTimeout(1000)
            
         } catch (error) {
