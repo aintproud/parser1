@@ -7,6 +7,8 @@ const selectors = {
     searchButton:'#searchButtonNew',
     product: '#article > div.g-png24.col-lg-12.results-window > div.results-content > table > tbody > tr:nth-child(3) > td.product_information > nobr.article > a > span',
     informationField: '#article > div.g-png24.col-lg-12.results-window > div.results-content > table > tbody > tr:nth-child(3)',
-    transitField: '#inTransitInfo > tbody > tr'
+    transitField: '#inTransitInfo > tbody > tr',
+    transitFieldExit: '#modalTechInfo > div > div > div.modal-header > button > span'
+
 }
 module.exports = selectors

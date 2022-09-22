@@ -37,26 +37,41 @@ const password = 'FdnjCthutq2017';
             await page.waitForTimeout(2000)
             await page.waitForSelector(selectors.informationField)
             
-            const elements = await page.$$(selectors.informationField+'> td')
-            for(const element of elements){
+            const freshArray = await page.$$(selectors.informationField+'> td')
+            freshArray.pop()
+            freshArray.pop()
+            freshArray.shift()
+            for(const element of freshArray){
                 const transit = await element.$('.transit')
+                const count = await element.$('.amois')
+                const tag = await page.$('.amono')
+                if(count){
+                    const c= await page.evaluate(e=>e.innerHTML, count)
+                    console.log(c)
+                }
+                else if(tag){
+                    console.log(0)
+                }
+                else{
+                    console.log('no count')
+                }
                 if(transit){
                     await transit.click()
                     await page.waitForTimeout(2000)
                     const [date, count]= await page.$$eval(selectors.transitField+'> td',e=>e.map(e=>e.innerHTML))
                     console.log(date, count)
+                    await page.click(selectors.transitFieldExit)
 
                 } else{
-                    awa
-                    console.log('element isnt found')
+                    console.log('no transit')
                 }
                 await page.waitForTimeout(1000)
             }
-                
-            
+            await page.click(selectors.searchField,{clickCount:3})   
+            await page.waitForTimeout(1000)
            
         } catch (error) {
-            console.log(3333)
+            console.log(error)
         }
 
     }
