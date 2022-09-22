@@ -34,7 +34,7 @@ const password = 'FdnjCthutq2017';
             await page.type(selectors.searchField, code)
             await page.click(selectors.searchButton)
             
-            await page.waitForTimeout(9000)
+            await page.waitForTimeout(2000)
             await page.waitForSelector(selectors.informationField)
             
             const elements = await page.$$(selectors.informationField+'> td')
@@ -42,9 +42,15 @@ const password = 'FdnjCthutq2017';
                 const transit = await element.$('.transit')
                 if(transit){
                     await transit.click()
+                    await page.waitForTimeout(2000)
+                    const [date, count]= await page.$$eval(selectors.transitField+'> td',e=>e.map(e=>e.innerHTML))
+                    console.log(date, count)
+
                 } else{
+                    awa
                     console.log('element isnt found')
                 }
+                await page.waitForTimeout(1000)
             }
                 
             
