@@ -68,7 +68,7 @@ const password = 'FdnjCthutq2017';
                 }
                 await page.waitForTimeout(1000)
             }
-
+            await page.click(selectors.searchField)
             await page.keyboard.down( 'Control' );
             await page.keyboard.press( 'A' );
             await page.keyboard.up( 'Control' );
