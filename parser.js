@@ -40,33 +40,40 @@ const password = 'FdnjCthutq2017';
             const freshArray = await page.$$(selectors.informationField+'> td')
             freshArray.pop()
             freshArray.pop()
-            freshArray.shift()
+            
             for(i=0;i<freshArray.length; i++){
                 const element = freshArray[i]
-                const transit = await element.$('.transit')
-                const count = await element.$('.amois')
-                const tag = await page.$('.amono')
-                if(count){
-                    const c= await page.evaluate(e=>e.innerHTML, count)
-                    console.log(c)
+                if (i==0){
+                    console.log('info')
                 }
-                else if(tag){
-                    console.log(0)
+                else if(i==freshArray.length-1){
+                    const price = await element.evaluate(e=>e.firstElementChild.innerHTML,element)
+                    console.log(price)
                 }
                 else{
-                    console.log('no count')
-                }
-                if(transit){
-                    await transit.click()
-                    await page.waitForTimeout(2000)
-                    const [date, count]= await page.$$eval(selectors.transitField+'> td',e=>e.map(e=>e.innerHTML))
-                    console.log(date, count)
-                    await page.click(selectors.transitFieldExit)
-
-                } else{
-                    console.log('no transit')
-                }
-                await page.waitForTimeout(1000)
+                    const transit = await element.$('.transit')
+                    const count = await element.$('.amois')
+                    const tag = await element.$('.amono')
+                    if(count){
+                        const c= await page.evaluate(e=>e.innerHTML, count)
+                        console.log(c)
+                    }
+                    else if(tag){
+                        console.log(0)
+                    }
+                    if(transit){
+                        await transit.click()
+                        await page.waitForTimeout(2000)
+                        const [date, count]= await page.$$eval(selectors.transitField+'> td',e=>e.map(e=>e.innerHTML))
+                        console.log(date, count)
+                        await page.click(selectors.transitFieldExit)
+                    } 
+                    else{
+                        console.log('no transit')
+                    }
+                    await page.waitForTimeout(1000)
+            }
+                
             }
             await page.click(selectors.searchField)
             await page.keyboard.down( 'Control' );
