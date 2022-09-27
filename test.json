@@ -7,7 +7,7 @@
         {
             "location":"",
             "count": 0,
-            "delivery": {
+            "transit": {
                 "count":0,
                 "date":""
             }
@@ -23,7 +23,7 @@
                 {
                     "location":"",
                     "count": 0,
-                    "delivery": {
+                    "transit": {
                         "count":0,
                         "date":""
                     }
